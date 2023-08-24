@@ -7,9 +7,6 @@ from dotenv import load_dotenv
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
 
-# open the 'OpenWeather' website and generate your key
-API_KEY = "1617be6066a665d681c8ec134b36c51f"
-
 # there are a lot of ways to make your own api call in OpenWeather website 
 city_name = "Caraguatatuba"
 country_code = "BR"
