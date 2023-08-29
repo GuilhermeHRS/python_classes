@@ -3,6 +3,7 @@ import requests
 import datetime
 import os
 from dotenv import load_dotenv
+import tkinter as tk
 
 load_dotenv()
 API_KEY = os.getenv("API_KEY")
@@ -36,4 +37,26 @@ sunsetTime = dt_sunset.strftime(format)
 description = dic_request['weather'][0]['description']
 weather = round(dic_request['main']['temp'] - 273)
 
-print(f"Day: {dt_timestamp_day}\nSunrise time: {sunriseTime}\nSunset time: {sunsetTime}\nTemperature in Celsius: {weather}°")
+# print(f"Day: {dt_timestamp_day}\nSunrise time: {sunriseTime}\nSunset time: {sunsetTime}\nTemperature in Celsius: {weather}°")
+
+window = tk.Tk()
+window.title("Weather Forecast")
+
+width = 400
+height = 200
+window.geometry(f"{width}x{height}")
+
+label_dt = tk.Label(window, text= f"Now: {dt_timestamp_day}")
+label_dt.pack(pady=15)
+
+label_sun = tk.Label(window, text=f"Sunrise: {sunriseTime} - Sunset: {sunsetTime}")
+label_sun.pack(pady=2)
+
+label_weather = tk.Label(window, text=f"Today it's {weather}° Celsius in {city_name}")
+label_weather.pack(pady=1)
+
+btn = tk.Button(window, text="Close", pady=3, width= 10, command=window.quit)
+btn.pack()
+
+window.mainloop(0)
+
